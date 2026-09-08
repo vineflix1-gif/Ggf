@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- ═══ PRIMARY SEO (Fallback) ═══ -->
+<title id="pageTitle">TV Series Details — Movie Mania LK</title>
+<meta name="description" id="metaDesc" content="Movie Mania LK — Sri Lanka's free movie & TV series streaming and download platform. Watch and download the latest movies and TV series with Sinhala subtitles.">
+<meta name="keywords" content="movie mania lk, sinhala subtitles, sinhala sub movies, watch movies online sri lanka, download movies sinhala subtitle, tv series sinhala subtitles, sri lanka movie site">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Movie Mania LK">
+<link rel="canonical" id="canonicalUrl" href="https://www.moviemanialk.com/">
+
+<!-- ═══ OPEN GRAPH ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Movie Mania LK">
+<meta property="og:title" id="ogTitle" content="TV Series Details — Movie Mania LK">
+<meta property="og:description" id="ogDesc" content="Watch and download latest movies and TV series with Sinhala subtitles on Movie Mania LK.">
+<meta property="og:url" id="ogUrl" content="https://www.moviemanialk.com/">
+<meta property="og:image" id="ogImage" content="https://www.moviemanialk.com/baner.png">
+<meta property="og:locale" content="en_US">
+
+<!-- ═══ TWITTER CARD ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twitterTitle" content="TV Series Details — Movie Mania LK">
+<meta name="twitter:image" id="twitterImage" content="https://www.moviemanialk.com/baner.png">
+
+<!-- ═══ FAVICON ═══ -->
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon"  type="image/png" href="/logo.png">
+<meta name="theme-color" content="#0a0908">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+
+<!-- Inline logo styles (Tailwind conversion) -->
+<style>
+  .logo-mark{
+    width:24px;height:24px;
+    background:#dc2626;
+    border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+    line-height:1;
+    flex-shrink:0;
+  }
+  @media (min-width:640px){
+    .logo-mark{width:32px;height:32px;font-size:20px}
+  }
+</style>
+
+<style>
+/* Loading state */
+.loading-view { position: fixed; inset: 0; background: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.4s; }
+.loading-view.fade-out { opacity: 0; pointer-events: none; }
+.loading-spinner { width: 48px; height: 48px; border: 3px solid rgba(232, 38, 42, 0.15); border-top-color: var(--crimson); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 16px; }
+.loading-text { font-size: 13px; font-weight: 700; color: rgba(242, 236, 226, 0.4); letter-spacing: 1px; text-transform: uppercase; }
+
+/* Not found state */
+.not-found-view { display: none; min-height: 100vh; background: var(--ink); padding: 120px 20px 60px; text-align: center; }
+.nf-icon { width: 80px; height: 80px; margin: 0 auto 24px; color: rgba(232, 38, 42, 0.2); }
+.nf-title { font-family: 'Anton', sans-serif; font-size: 32px; letter-spacing: 1px; color: var(--parchment); margin-bottom: 12px; }
+.nf-desc { font-size: 14px; color: rgba(242, 236, 226, 0.5); max-width: 300px; margin: 0 auto 32px; line-height: 1.6; }
+.nf-btn { background: var(--crimson); color: #fff; border: none; font-size: 13px; font-weight: 800; letter-spacing: 1px; padding: 14px 32px; border-radius: 50px; cursor: pointer; transition: transform 0.2s; }
+.nf-btn:active { transform: scale(0.95); }
+
+#tvContent { display: none; }
+
+/* ===== STREAM URL LIST (Watch Online) ===== */
+.dp-stream-wrap{margin:8px 20px 22px;background:linear-gradient(155deg, rgba(232,38,42,0.06), rgba(5,5,5,0.98));border:1px solid rgba(232,38,42,0.22);border-radius:16px;padding:16px 16px 14px}
+.dp-stream-header{display:flex;align-items:center;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid rgba(242,236,226,0.07)}
+.dp-stream-header-icon{width:20px;height:20px;flex-shrink:0;color:#E8262A}
+.dp-stream-header-icon svg{width:20px;height:20px;fill:currentColor;stroke:none}
+.dp-stream-header-label{flex:1;font-family:'Anton',sans-serif;font-size:16px;letter-spacing:1.8px;color:var(--parchment)}
+.dp-stream-sublabel{font-size:11px;color:rgba(242,236,226,0.45);font-weight:600;letter-spacing:.3px;margin-top:4px;line-height:1.5;padding:0 2px 6px}
+.dp-stream-sublabel b{color:#fbbf24;font-weight:700}
+.dp-stream-list{display:flex;flex-direction:column;gap:10px}
+.dp-stream-card{background:rgba(31,41,55,0.55);border:1px solid rgba(232,38,42,0.2);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s ease, transform .12s ease}
+.dp-stream-card:hover{border-color:rgba(232,38,42,0.45)}
+.dp-stream-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.dp-stream-pill{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.4px;font-family:'Manrope',sans-serif}
+.dp-stream-pill.norm{background:rgba(232,38,42,0.15);color:#fca5a5;border:1px solid rgba(232,38,42,0.35)}
+.dp-stream-pill.fb{background:rgba(99,102,241,0.15);color:#a5b4fc;border:1px solid rgba(99,102,241,0.3)}
+.dp-stream-pill.qual{background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.3)}
+.dp-stream-url{font-family:'SF Mono',Menlo,Consolas,monospace;font-size:11px;color:rgba(242,236,226,0.55);background:rgba(0,0,0,0.4);border-radius:8px;padding:8px 10px;word-break:break-all;line-height:1.4}
+.dp-stream-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.dp-stream-watch{display:inline-flex;align-items:center;gap:7px;background:#E8262A;color:#fff;border:none;border-radius:12px;padding:11px 18px;font-size:12px;font-weight:800;letter-spacing:1.2px;cursor:pointer;font-family:'Manrope',sans-serif;text-transform:uppercase;text-decoration:none;transition:background-color .15s ease, transform .1s ease;box-shadow:0 6px 18px rgba(232,38,42,0.35)}
+.dp-stream-watch:hover{background:#b91c1c}
+.dp-stream-watch:active{transform:scale(0.97)}
+.dp-stream-watch svg{width:14px;height:14px;fill:currentColor}
+.dp-stream-copy{display:inline-flex;align-items:center;gap:5px;background:rgba(242,236,226,0.06);color:rgba(242,236,226,0.7);border:1px solid rgba(242,236,226,0.12);border-radius:12px;padding:11px 14px;font-size:11px;font-weight:700;letter-spacing:.5px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .15s ease}
+.dp-stream-copy:hover{color:#fff;border-color:rgba(242,236,226,0.3);background:rgba(242,236,226,0.12)}
+.dp-stream-copy.copied{color:#4ade80;border-color:#4ade80;background:rgba(34,197,94,0.12)}
+.dp-stream-empty{padding:8px 4px 10px;color:rgba(242,236,226,0.4);font-size:13px}
+.dp-stream-subtitle{display:flex;align-items:center;gap:8px;font-size:11px;color:#fbbf24;background:rgba(245,197,24,0.07);border:1px solid rgba(245,197,24,0.22);border-radius:8px;padding:7px 10px;word-break:break-all}
+.dp-stream-subtitle svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:#fbbf24;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dp-stream-subtitle code{flex:1;font-family:'SF Mono',Menlo,Consolas,monospace;font-size:10.5px;color:#fbbf24}
+</style>
+</head>
+<body>
+  <!-- 18+ AGE RESTRICTION MODAL -->
+<div class="age-modal" id="ageModal">
+  <div class="age-card">
+    <div class="age-icon">
+      <div class="age-icon-ring"></div>
+      <div class="age-icon-ring d2"></div>
+      <svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a20.3 20.3 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a20.3 20.3 0 0 1-3.22 4.44M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+    </div>
+    <div class="age-attention">ATTENTION REQUIRED</div>
+    <div class="age-title">Age Restricted</div>
+    <div class="age-desc">මෙම සිනමා නිර්මාණය <span>වැඩිහිටියන්ට පමණක්</span> ගැලපෙන දර්ශන හෝ භාෂා විලාසයන්ගෙන් යුක්ත විය හැක.</div>
+    <div class="age-rated">RATED 18+ &middot; VIEWER DISCRETION ADVISED</div>
+    <button class="age-btn" onclick="closeAgeModal()">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      I UNDERSTAND
+    </button>
+    <div class="age-safety">MOVIE MANIA LK CONTENT SAFETY</div>
+  </div>
+</div>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <div class="nav-logo" onclick="window.location.href='/'" style="cursor:pointer">
+      <div class="logo-mark">M</div>
+      <div class="logo-text">
+        <div class="logo-title">MOVIE MANIA <span>LK</span></div>
+        <div class="logo-tag">Cinematic Streaming</div>
+      </div>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn search" aria-label="Search" onclick="openSearchPopup()">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-icon-btn request" aria-label="Request a title" onclick="openRequestPage()">
+        <svg viewBox="0 0 24 24"><path d="M2 8l3-5h14l3 5H2z"/><path d="M2 8h20v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8z"/></svg>
+        <span class="nav-badge-plus"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div id="accountSlot">
+        <button class="nav-icon-btn account" aria-label="Account" onclick="openAuthModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(242,236,226,0.88)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+      <button class="nav-icon-btn menu" aria-label="Menu" onclick="openMenuDrawer()">
+        <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- LOADING VIEW -->
+  <div id="loadingView" class="loading-view">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading title...</div>
+  </div>
+
+  <!-- NOT FOUND VIEW -->
+  <div id="notFoundView" class="not-found-view">
+    <div class="nf-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.5 12h-15m15 0a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/><path d="M12 9v3.75m0 3.75h.008v.008H12V16.5Z"/></svg>
+    </div>
+    <h1 class="nf-title">Title Not Found</h1>
+    <p class="nf-desc">The movie or series you are looking for doesn't exist or may have been removed.</p>
+    <button class="nf-btn" onclick="window.location.href='/'">GO TO HOMEPAGE</button>
+  </div>
+
+  <!-- MOVIE CONTENT -->
+  <div id="movieContent" class="dp-wrap">
+    <!-- Content will be injected here by JS -->
+  </div>
+
+  <div id="dlGateway" style="display:none;position:fixed;inset:0;z-index:7000;background:var(--ink);overflow-y:auto"></div>
+  <div id="actorPage" style="display:none;position:fixed;inset:0;z-index:250;background:var(--ink);overflow-y:auto;transition:transform 0.32s cubic-bezier(.4,0,.2,1)"></div>
+  <div id="requestPage" style="display:none;position:fixed;inset:0;z-index:260;background:var(--ink);overflow-y:auto;transition:transform 0.32s cubic-bezier(.4,0,.2,1)"></div>
+  <div id="epDetailsPage" style="display:none;position:fixed;inset:0;z-index:6500;background:var(--ink);overflow-y:auto;-webkit-overflow-scrolling:touch"></div>
+  <div class="ep-dl-modal" id="epDlModal" onclick="if(event.target===this)closeEpModal()">
+    <div class="ep-dl-sheet">
+      <div class="ep-dl-handle"></div>
+      <div class="ep-dl-title" id="epModalTitle">Episode 1</div>
+      <div class="ep-dl-sub" id="epModalSub"></div>
+      <div id="epModalBody"></div>
+      <div style="margin-top:16px"><div class="dp-ep-btn" style="width:100%;justify-content:center;padding:12px;border-radius:12px;font-size:12px" onclick="closeEpModal()">Close</div></div>
+    </div>
+  </div>
+
+  <div class="search-popup-backdrop" id="searchPopupBackdrop" onclick="closeSearchPopup()"></div>
+  <div class="search-popup" id="searchPopup">
+    <div class="search-popup-head">
+      <input class="search-popup-input" id="searchPopupInput" placeholder="Search movies & series..." oninput="runSearchPopup(this.value)">
+      <button class="search-popup-close" onclick="closeSearchPopup()" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="search-count-pill" id="searchCountPill" style="display:none"></div>
+    <div class="search-popup-results" id="searchPopupResults"></div>
+  </div>
+
+  <div class="menu-backdrop" id="menuBackdrop" onclick="closeMenuDrawer()"></div>
+  <div class="menu-drawer" id="menuDrawer">
+    <div class="menu-drawer-head">
+      <div class="menu-drawer-title">MENU</div>
+      <button class="menu-close-btn" onclick="closeMenuDrawer()" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="menu-section">
+      <div class="menu-section-head"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> CATEGORIES</div>
+      <div class="menu-stack">
+        <div class="menu-cat-pill" onclick="window.location.href='/?cat=movie'">Movies<span class="menu-cat-dot"></span></div>
+        <div class="menu-cat-pill" onclick="window.location.href='/?cat=series'">TV Shows<span class="menu-cat-dot"></span></div>
+      </div>
+    </div>
+    <div class="menu-section">
+      <div class="menu-section-head"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg> GENRES</div>
+      <div class="menu-grid" id="menuGenres"></div>
+    </div>
+  </div>
+
+  <div class="auth-modal" id="authModal" onclick="if(event.target===this)closeAuthModal()">
+    <div class="auth-sheet">
+      <div class="auth-handle"></div>
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="authTabLogin" onclick="switchAuthTab('login')">Login</div>
+        <div class="auth-tab" id="authTabRegister" onclick="switchAuthTab('register')">Register</div>
+      </div>
+      <div id="authLoginForm">
+        <div class="auth-field"><label>Email</label><input type="email" id="loginEmail" placeholder="you@example.com"></div>
+        <div class="auth-field"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••"></div>
+        <div class="auth-status" id="loginStatus"></div>
+        <button class="auth-submit" id="loginBtn" onclick="doLogin()">Login</button>
+      </div>
+      <div id="authRegisterForm" style="display:none">
+        <div class="auth-field"><label>Name</label><input type="text" id="regName" placeholder="Your name"></div>
+        <div class="auth-field"><label>Email</label><input type="email" id="regEmail" placeholder="you@example.com"></div>
+        <div class="auth-field"><label>Password</label><input type="password" id="regPassword" placeholder="Min 6 characters"></div>
+        <div class="auth-status" id="registerStatus"></div>
+        <button class="auth-submit" id="registerBtn" onclick="doRegister()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-page" id="profilePage">
+    <div class="profile-topbar">
+      <div class="profile-back" onclick="closeProfilePage()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div class="profile-topbar-title" id="profilePageTitle">My Profile</div>
+    </div>
+    <div id="profileMain">
+      <div class="profile-hero">
+        <div class="profile-avatar-lg" id="profileAvatarLg">G</div>
+        <div class="profile-name" id="profileNameDisplay">User</div>
+        <div class="profile-email" id="profileEmailDisplay"></div>
+      </div>
+      <div class="profile-section">
+        <div class="profile-section-title">Account</div>
+        <div class="profile-card">
+          <div class="profile-field-wrap"><div class="profile-field-label">Display Name</div><input class="profile-field-input" id="profileEditName" type="text" /></div>
+          <div class="profile-field-wrap" style="border:none;padding-top:8px;"><button class="profile-save-btn" style="width:100%;margin:0;" onclick="saveProfileChanges()">SAVE CHANGES</button></div>
+        </div>
+      </div>
+      <button class="profile-logout-btn" onclick="logoutUser()">LOGOUT</button>
+    </div>
+  </div>
+
+  <div class="info-modal-backdrop" id="infoModalBackdrop" onclick="closeInfoModalOutside(event)">
+    <div class="info-modal" id="infoModal">
+      <div class="info-modal-handle"></div>
+      <div class="info-modal-hdr"><div class="info-modal-title" id="infoModalTitle">About Us</div><div class="info-modal-close" onclick="closeInfoModal()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div></div>
+      <div class="info-modal-body" id="infoModalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-logo">MOVIE<span>MANIA</span></div>
+    <div class="footer-copy">© 2026 MOVIE MANIA LK. All rights reserved.</div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+const FIREBASE_DB_URL = "https://cineflix1-1fdc6-default-rtdb.firebaseio.com";
+const FIREBASE_API_KEY = "AIzaSyAh6zMB65iWqt3R2Ep0C5_7eV8ZaUHI7t8";
+const TMDB_API = 'https://api.themoviedb.org/3';
+const TMDB_IMG = 'https://image.tmdb.org/t/p/';
+const TMDB_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZWJkMDRhMTVhNzY0YWVmYmJjNzEyMGY5YTFmN2ZjYyIsIm5iZiI6MTc3NDA1OTkzNi43MjMsInN1YiI6IjY5YmUwMWEwMDI2ZjU1MjkwZmE1ZGVlYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RcaHm0ztmGjBYFjJ5VFs6bnTtXrj95oK1dlPXj4cGdg';
+
+let MOVIES = [];
+let MOVIE_MAP = {};
+let currentUser = null;
+let watchlist = JSON.parse(localStorage.getItem('cf_watchlist') || '[]');
+let recentlyViewed = JSON.parse(localStorage.getItem('cf_recent') || '[]');
+
+let _currentMovie = null;
+let _dlGroupsById = {};
+
+// ── UTILS ────────────────────────────────────────────────────────────────────
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>'); }
+function escAttr(s){ return esc(s).replace(/"/g,'"'); }
+function genreList(m){ return (m.genre||'').split(',').map(s=>s.trim()).filter(Boolean); }
+function ratingText(m){ const r=parseFloat(m.rating); return isFinite(r)?r.toFixed(1):'N/A'; }
+async function tmdbFetch(path){ const r = await fetch(`${TMDB_API}${path}`, { headers:{ Authorization:`Bearer ${TMDB_TOKEN}` } }); if(!r.ok) throw new Error('tmdb '+r.status); return r.json(); }
+
+function navigateToTitle(id, type) {
+  if (!id) return;
+  const m = (typeof MOVIE_MAP !== 'undefined') ? MOVIE_MAP[id] : null;
+  const t = type || (m && m.type);
+  // TV series goes to tv.html, movie goes to movie.html
+  const isTV = (t === 'tv' || t === 'series' || t === 'tv-series');
+  const pageFile = isTV ? 'tv.html' : 'movie.html';
+  window.location.href = pageFile + '?id=' + encodeURIComponent(id);
+}
+
+function getMovieIdFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const qId = urlParams.get('id');
+  if (qId) return decodeURIComponent(qId);
+  const match = window.location.pathname.match(/\/(?:movie|tv|series)\/([^/?#]+)/i);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+// ── BOOT ─────────────────────────────────────────────────────────────────────
+async function boot() {
+  loadSession();
+  const movieId = getMovieIdFromUrl();
+  if (!movieId) {
+    showNotFound();
+    return;
+  }
+
+  try {
+    // Parallel fetch: current movie + all movies (for similar/collection/search)
+    const [movieRes, allRes] = await Promise.all([
+      fetch(`${FIREBASE_DB_URL}/movies/${movieId}.json`),
+      fetch(`${FIREBASE_DB_URL}/movies.json`)
+    ]);
+
+    const movieData = await movieRes.json();
+    if (!movieData) {
+      showNotFound();
+      return;
+    }
+
+    const allData = await allRes.json();
+    // Sort by addedAt desc (latest added first); missing addedAt falls back to 0 (sorted last).
+    MOVIES = allData
+      ? Object.entries(allData).map(([id,v])=>({id,...v}))
+         .sort((a,b) => (b.addedAt||0) - (a.addedAt||0))
+      : [];
+    MOVIES.forEach(normalizeSeasons);
+    MOVIE_MAP = {}; MOVIES.forEach(m=>MOVIE_MAP[m.id]=m);
+
+    _currentMovie = { id: movieId, ...movieData };
+    normalizeSeasons(_currentMovie);
+
+    renderMovie(_currentMovie);
+    document.getElementById('loadingView').classList.add('fade-out');
+
+    // Update browser URL bar to clean /tv/:id route without reloading
+    try {
+      if (window.location.pathname.includes('tv.html')) {
+        window.history.replaceState({}, '', `/tv/${encodeURIComponent(movieId)}`);
+      }
+    } catch(e){}
+  } catch (e) {
+    console.error(e);
+    showNotFound();
+  }
+}
+
+function showNotFound() {
+  document.getElementById('loadingView').classList.add('fade-out');
+  document.getElementById('notFoundView').style.display = 'block';
+}
+
+function normalizeSeasons(m){
+  if(!m.seasons) return;
+  let seasons = m.seasons;
+  if(!Array.isArray(seasons) && typeof seasons==='object') seasons = Object.values(seasons);
+  m.seasons = (seasons||[]).filter(Boolean).map(s=>{
+    let eps = s.episodes;
+    if(eps && !Array.isArray(eps) && typeof eps==='object') eps = Object.values(eps);
+    return {...s, episodes: (eps||[]).filter(Boolean)};
+  });
+}
+
+function renderMovie(m) {
+  const container = document.getElementById('movieContent');
+  container.style.display = 'block';
+
+  // Update SEO
+  const title = `${m.title||'Movie'}${m.year?' ('+m.year+')':''} — Watch & Download | Movie Mania LK`;
+  document.title = title;
+  document.getElementById('pageTitle').textContent = title;
+  document.getElementById('ogTitle').content = title;
+  document.getElementById('twitterTitle').content = title;
+  // Canonical & og:url should reflect the clean slug-based /tv/:id route
+  const cleanUrl = `https://www.moviemanialk.com/tv/${encodeURIComponent(m.id)}`;
+  const canonicalEl = document.getElementById('canonicalUrl');
+  const ogUrlEl = document.getElementById('ogUrl');
+  if (canonicalEl) canonicalEl.href = cleanUrl;
+  if (ogUrlEl) ogUrlEl.content = cleanUrl;
+  if (m.poster) {
+    document.getElementById('ogImage').content = m.poster;
+    document.getElementById('twitterImage').content = m.poster;
+  }
+  if (m.description) {
+    const desc = m.description.slice(0, 160);
+    document.getElementById('metaDesc').content = desc;
+    document.getElementById('ogDesc').content = desc;
+  }
+
+  // 18+ Check
+  if (genreList(m).some(g => g.toLowerCase() === '18+')) {
+    showAgeModal();
+  }
+
+  addToRecent(m.id);
+  bumpCount(m.id, 'views');
+
+  // Build UI parts
+  const isTV = (m.type === 'tv' || m.type === 'series' || m.type === 'tv-series');
+  
+  // Cast
+  const cast = (m.cast||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const castHTML = cast.length ? cast.slice(0,8).map((name,ci)=>`
+    <div class="dp-cast-item" onclick="openActorDetail('${escAttr(name)}')">
+      <div class="dp-cast-avatar-wrap">
+        <img class="dp-cast-avatar" id="castImg_${ci}" src="" alt="${esc(name)}" style="display:none" onerror="this.style.display='none';document.getElementById('castFallback_${ci}').style.display='flex'">
+        <div class="dp-cast-fallback" id="castFallback_${ci}" style="display:flex;align-items:center;justify-content:center;width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,#3a1410,#17130f);color:#f2ece2;font-weight:800;font-size:24px;border:2.5px solid rgba(242,236,226,0.55)">${esc(name.charAt(0).toUpperCase())}</div>
+      </div>
+      <div class="dp-cast-name">${esc(name)}</div>
+    </div>`).join('') : `<div class="dp-no-comment">Cast not added yet.</div>`;
+
+  // Series
+  let seriesHTML = '';
+  if (isTV && m.seasons?.length) {
+    const tabs = m.seasons.map((s,i) => `<div class="dp-season-tab${i===0?' active':''}" onclick="dpSwitchSeason(${i})">${esc(s.name||'Season '+(i+1))}</div>`).join('');
+    const panels = m.seasons.map((s,si) => {
+      const eps = (s.episodes||[]).map(ep => {
+        const hasDl = !!(ep.pd480||ep.pd720||ep.pd1080||ep.dlUrl||ep.srv1||ep.srv2||ep.srv3);
+        const hasSub = !!(ep.dlSubUrl || ep.subUrl);
+        const thumb = ep.img || ep.thumb || ep.image || '';
+        return `
+        <div class="dp-ep-card" onclick="openEpDetailsPage('${m.id}',${si},${ep.ep-1})">
+          <div class="dp-ep-thumb" id="epThumb-${si}-${ep.ep}">
+            ${thumb ? `<img src="${escAttr(thumb)}" alt="ep" loading="lazy" onerror="this.style.display='none'">` : `<div class="dp-ep-thumb-ph"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>`}
+            <div class="dp-ep-num">Ep ${ep.ep}</div>
+          </div>
+          <div class="dp-ep-info">
+            <div class="dp-ep-title">${esc(ep.title || 'Episode '+ep.ep)}</div>
+            <div class="dp-ep-meta">
+              ${ep.runtime ? `<span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${esc(ep.runtime)}</span>` : ''}
+              ${ep.airDate ? `<span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${esc(ep.airDate)}</span>` : ''}
+            </div>
+          </div>
+          ${(hasDl||hasSub) ? `<div class="dp-ep-dlbtn" onclick="event.stopPropagation();openEpDetailsPage('${m.id}',${si},${ep.ep-1})"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>` : ''}
+        </div>`;
+      }).join('');
+      return `<div class="dp-ep-list" id="dp-panel-${si}" style="display:${si===0?'flex':'none'};flex-direction:column;gap:10px;">${eps}</div>`;
+    }).join('');
+    seriesHTML = `<div class="dp-section-head" style="margin-top:8px"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> SEASONS & EPISODES</div><div class="dp-seasons-wrap"><div class="dp-season-tabs">${tabs}</div>${panels}</div>`;
+  }
+
+  // Downloads (Movie)
+  let dlHTML = '';
+  if (!isTV && m.downloads?.length) {
+    m.downloads.forEach((d, i) => {
+      const rows = [{u:d.pd480, r:'480p', t:'SD'}, {u:d.pd720, r:'720p', t:'HD'}, {u:d.pd1080, r:'1080p', t:'FHD'}].filter(x=>x.u);
+      if(!rows.length && d.url) rows.push({u:d.url, r:d.res||'HD', t:d.res==='1080p'?'FHD':'HD'});
+      const gid = 'g' + i + '_' + Math.random().toString(36).slice(2,7);
+      _dlGroupsById[gid] = d;
+      rows.forEach(r => {
+        dlHTML += `<div class="dp-dl-card" onclick="doDownload('${escAttr(r.u)}','${escAttr(r.r)}','${escAttr(d.size||'')}','DL SERVER 1','${gid}')">
+          <div class="dp-dl-inner">
+            <div class="dp-dl-qbox ${r.t==='FHD'?'fhd':''}"><div class="dp-dl-qtype">${r.t}</div><div class="dp-dl-qres">${r.r}</div></div>
+            <div class="dp-dl-info"><div class="dp-dl-title-row"><span class="dp-dl-label">Direct Download</span><span class="dp-dl-tag">${esc(d.quality||m.quality||'WEB-DL')}</span></div><div class="dp-dl-meta-row">${d.size?`<span class="dp-dl-size">${esc(d.size)}</span>`:''}${d.codec?`<span class="dp-dl-chip hevc">${esc(d.codec)}</span>`:''}</div></div>
+          </div>
+          <div class="dp-dl-btn"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        </div>`;
+      });
+    });
+  }
+
+  const subUrl = m.dlSubUrl || m.subUrl;
+  const subHTML = subUrl ? `<div class="dp-sub-card" onclick="doDownload('${escAttr(subUrl)}',null,null,null,null,true)"><div class="dp-sub-inner"><div class="dp-sub-qbox"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="dp-dl-info"><div class="dp-sub-label">Sinhala Subtitle</div><div class="dp-sub-by">BY <b>${esc((m.subBy||'Movie Mania LK').toUpperCase())}</b></div></div></div><div class="dp-sub-btn"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div></div>` : '';
+
+  // Collection
+  let colHTML = '';
+  if (m.collection) {
+    const colMovies = MOVIES.filter(x => x.collection?.toLowerCase() === m.collection.toLowerCase()).sort((a,b)=>(a.collectionOrder||0)-(b.collectionOrder||0));
+    if (colMovies.length > 1) {
+      const cards = colMovies.map(cm => {
+        const isCur = cm.id === m.id;
+        return `<div class="col-timeline-card${isCur?' col-current':''}" onclick="${isCur?'':'navigateToTitle(\''+cm.id+'\')'}">
+          <div class="col-timeline-poster-wrap"><img src="${escAttr(cm.poster)}" loading="lazy"> ${isCur?'<div class="col-timeline-now">NOW</div>':''}</div>
+          <div class="col-timeline-title">${esc(cm.title)}</div>
+          <div class="col-timeline-meta"><span>${esc(cm.year)}</span><span>⭐ ${esc(cm.rating)}</span></div>
+        </div>`;
+      }).join('');
+      colHTML = `<div class="dp-section-head" style="margin-top:22px"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="4" height="10"/><rect x="10" y="4" width="4" height="16"/><rect x="18" y="2" width="4" height="20"/></svg> ${esc(m.collection.toUpperCase())} COLLECTION</div><div class="col-timeline-scroll"><div class="col-timeline-track">${cards}</div></div><div class="col-timeline-scrollbar"><div class="col-timeline-scrollbar-fill"></div></div>`;
+    }
+  }
+
+  // Similar
+  const myGenres = genreList(m).map(g=>g.toLowerCase());
+  const similar = MOVIES.filter(mm => mm.id !== m.id && genreList(mm).some(g => myGenres.includes(g.toLowerCase()))).slice(0, 12);
+  const similarHTML = similar.map(mm => `
+    <div class="dp-similar-item">
+      <div class="movie-card" onclick="navigateToTitle('${mm.id}')">
+        <div class="mcp"><img src="${escAttr(mm.poster)}" loading="lazy"><div class="mc-rating">${ratingText(mm)}</div><div class="mc-bottom"><div class="mc-title">${esc(mm.title)}</div></div></div>
+      </div>
+    </div>`).join('');
+
+  container.innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px 0">
+      <button onclick="window.history.length > 1 ? window.history.back() : window.location.href='/'" style="display:inline-flex;align-items:center;gap:7px;background:rgba(242,236,226,0.08);border:1px solid rgba(242,236,226,0.12);color:rgba(242,236,226,0.7);font-size:11px;font-weight:800;letter-spacing:1.2px;padding:9px 16px;border-radius:50px;cursor:pointer;font-family:'Manrope',sans-serif">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> BACK
+      </button>
+    </div>
+    <div class="dp-poster-wrap"><img class="dp-poster" src="${escAttr(m.poster)}"></div>
+    <div class="dp-badges"><span class="dp-badge dp-badge-ep">${esc(m.quality||'HD')}</span><span class="dp-badge dp-badge-rate">&#11088; ${ratingText(m)}</span></div>
+    <h1 class="dp-title">${esc(m.title)}</h1>
+    <div class="dp-meta"><span class="dp-meta-pill">${esc(m.year)}</span>${genreList(m).map(g=>`<span class="dp-meta-pill">${esc(g)}</span>`).join('')}</div>
+    <p class="dp-desc">${esc(m.description || 'No description.')}</p>
+    <div id="dpStreamSection"></div>
+    <div class="dp-credit-row">
+      <div class="dp-credit-pill"><div class="dp-credit-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 9.5-9.5z"/></svg></div><div><div class="dp-credit-label">DESCRIPTION BY</div><div class="dp-credit-name">${esc((m.describedBy||m.descBy||'Movie Mania LK').toUpperCase())}</div></div></div>
+      <div class="dp-credit-pill"><div class="dp-credit-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><div class="dp-credit-label">SUBTITLES BY</div><div class="dp-credit-name">${esc((m.subBy||'Movie Mania LK').toUpperCase())}</div></div></div>
+    </div>
+    ${colHTML}
+    <div class="dp-section-head"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> TOP CAST</div>
+    <div class="dp-cast-row" id="dpCastRow">${castHTML}</div>
+    <div class="dp-cast-scrollbar" id="dpCastScrollbar" style="display:none"><div class="dp-cast-scrollbar-fill" id="dpCastScrollbarFill"></div></div>
+    <div class="dp-section-head" style="margin-top:4px"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> STILLS</div>
+    <div class="dp-stills-row" id="dpStillsRow"><div class="dp-stills-loading"><div class="dp-stills-spinner"></div></div></div>
+    ${seriesHTML}
+    ${!isTV ? `<div class="dp-dl-wrap"><div class="dp-dl-header"><div class="dp-dl-header-icon"><svg viewBox="0 0 24 24"><path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0-20 0"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><div class="dp-dl-header-label">SELECT QUALITY</div></div>${dlHTML}</div><div class="dp-sub-wrap"><div class="dp-sub-header"><div class="dp-sub-header-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="15" x2="11" y2="15"/><line x1="15" y1="15" x2="17" y2="15"/><line x1="7" y1="11" x2="9" y2="11"/><line x1="13" y1="11" x2="17" y2="11"/></svg></div><div class="dp-sub-header-label">SUBTITLES</div></div>${subHTML || '<div class="dp-no-comment">Subtitles not available.</div>'}</div>` : ''}
+    <div class="dp-section-head"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> COMMENTS <span id="dpCommentCount"></span></div>
+    <div class="dp-comment-wrap"><div class="dp-comment-form"><input class="dp-comment-input" id="dpCommentName" placeholder="Your Name" onfocus="autoFillCommentName()"><textarea class="dp-comment-textarea" id="dpCommentText" placeholder="Write your thoughts..."></textarea><button class="dp-comment-submit" onclick="submitDetailComment()"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> POST</button></div><div id="dpCommentsList"></div></div>
+    <div class="dp-section-head" style="margin-top:40px"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8l-2 4h12z"/></svg> SIMILAR</div>
+    <div class="dp-similar-row">${similarHTML || '<div class="dp-no-comment">No similar titles found.</div>'}</div>
+  `;
+
+  // Start secondary fetches
+  if (m.tmdbId) {
+    fetchStills(m.tmdbId, m.type);
+    fetchCastPhotos(cast);
+  } else {
+    fetchStillsByTitle(m.title, m.type);
+    fetchCastPhotos(cast);
+  }
+  fetchDetailComments(m.id);
+  initCastScrollbar();
+  initColTimelineScrollbar();
+  buildMenuGrids();
+  renderStreamSection(m);
+}
+
+// ── STREAM URL LIST (built from Firebase movie data: streamUrl, streamUrl2, streamUrl3) ──
+function renderStreamSection(m){
+  const el = document.getElementById('dpStreamSection');
+  if(!el || !m) return;
+  const list = [m.streamUrl, m.streamUrl2, m.streamUrl3]
+    .map(u => (u || '').toString().trim())
+    .filter(Boolean);
+  if(!list.length){ el.innerHTML = ''; return; }
+  const labels = ['Movie Mania LK Player 1', 'Movie Mania LK Player 2', 'Movie Mania LK Player 3'];
+  const cards = list.map((url, i) => {
+    const safe = escAttr(url);
+    return `<div class="dp-stream-card">
+      <div class="dp-stream-meta"><span class="dp-stream-pill norm">${esc(labels[i] || ('Movie Mania LK Player ' + (i+1)))}</span></div>
+      <div class="dp-stream-actions">
+        <a class="dp-stream-watch" href="${safe}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg> WATCH NOW</a>
+      </div>
+    </div>`;
+  }).join('');
+  const head = `<div class="dp-stream-header"><div class="dp-stream-header-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 12 5 3"/><polygon points="5 12 19 12 5 21 5 12"/></svg></div><div class="dp-stream-header-label">WATCH ONLINE</div></div><div class="dp-stream-sublabel">මෙතනින් නොමිලේ නරඹන්න! <b>Movie Mania LK Player</b> එක තෝරාගෙන <b>Watch Now</b> බොත්තම ඔබන්න.</div>`;
+  el.innerHTML = `<div class="dp-stream-wrap">${head}<div class="dp-stream-list">${cards}</div></div>`;
+  el.querySelectorAll('[data-stream-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.getAttribute('data-stream-copy') || '';
+      if(!url) return;
+      try { navigator.clipboard.writeText(url); } catch(_) {
+        const ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch(__) {}
+        document.body.removeChild(ta);
+      }
+      const orig = btn.textContent;
+      btn.textContent = '✓ COPIED';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1400);
+    });
+  });
+}
+
+// ── Same WATCH ONLINE section, but for a single episode's own stream URLs
+// (ep.streamUrl, ep.streamUrl2, ep.streamUrl3) — episodes stream independently
+// from the movie/series-level ones. ──
+function renderEpStreamSection(m, ep){
+  const el = document.getElementById('dpEpStreamSection');
+  if(!el || !ep) return;
+  const list = [ep.streamUrl, ep.streamUrl2, ep.streamUrl3]
+    .map(u => (u || '').toString().trim())
+    .filter(Boolean);
+  if(!list.length){ el.innerHTML = ''; return; }
+  const labels = ['Movie Mania LK Player 1', 'Movie Mania LK Player 2', 'Movie Mania LK Player 3'];
+  const cards = list.map((url, i) => {
+    const safe = escAttr(url);
+    return `<div class="dp-stream-card">
+      <div class="dp-stream-meta"><span class="dp-stream-pill norm">${esc(labels[i] || ('Movie Mania LK Player ' + (i+1)))}</span></div>
+      <div class="dp-stream-actions">
+        <a class="dp-stream-watch" href="${safe}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg> WATCH NOW</a>
+      </div>
+    </div>`;
+  }).join('');
+  const head = `<div class="dp-stream-header"><div class="dp-stream-header-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 12 5 3"/><polygon points="5 12 19 12 5 21 5 12"/></svg></div><div class="dp-stream-header-label">WATCH ONLINE</div></div><div class="dp-stream-sublabel">මෙතනින් නොමිලේ නරඹන්න! <b>Movie Mania LK Player</b> එක තෝරාගෙන <b>Watch Now</b> බොත්තම ඔබන්න.</div>`;
+  el.innerHTML = `<div class="dp-stream-wrap">${head}<div class="dp-stream-list">${cards}</div></div>`;
+}
+const redirectPage = (url) => {
+  // 1. Open the provided URL in a new tab
+  window.open(url, '_blank');
+
+  // 2. Redirect the current tab after 3 seconds (3000ms)
+  setTimeout(() => {
+    // Using .replace() prevents the user from clicking "Back" and getting stuck in a redirect loop
+    // If you specifically want it in the browser history, use: window.location.href = ADD_URL;
+    window.location.replace("https://www.profitableratecpmnetwork.com/rnrg8zs2?key=61e60774e6d154f2f9097db811069d0f");
+  }, 3000);
+};
+
+// ── SHARED LOGIC (Mostly from index.html) ────────────────────────────────────
+// const AD_NETWORK_URL = "https://www.profitableratecpmnetwork.com/rnrg8zs2?key=61e60774e6d154f2f9097db811069d0f";
+const AD_NETWORK_URL = "https://www.effectivecpmnetwork.com/spcdf5fn?key=15132d4d1b7d17e3bd629df51a3415d1";
+  
+function fireAdNetwork(){ try{ window.open(AD_NETWORK_URL, '_blank', 'noopener'); }catch(e){} }
+const _adGateState = {};
+function adGate(key, action){
+  if(!_adGateState[key]){ _adGateState[key] = true; fireAdNetwork(); toast('ටිකක් ඉවසන්න... දැන් ආයෙත් click කරන්න!'); setTimeout(()=>{ _adGateState[key] = false; }, 15000); return; }
+  _adGateState[key] = false; action();
+}
+
+let _pendingAdultCard = null;
+
+function showAgeModal(){
+  const modal = document.getElementById('ageModal');
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeAgeModal(){
+  const modal = document.getElementById('ageModal');
+  if (modal) modal.style.display = 'none';
+  if (_pendingAdultCard) {
+    const card = _pendingAdultCard;
+    _pendingAdultCard = null;
+    if (typeof _openDetailReal === 'function') _openDetailReal(card);
+  }
+}
+
+function dpSwitchSeason(idx){
+  document.querySelectorAll('.dp-season-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('[id^="dp-panel-"]').forEach((p,i)=>p.style.display=i===idx?'flex':'none');
+}
+
+
+function doDownload(url, quality, size, server, gid, isSub){
+  adGate('dl_'+url, () => {
+    bumpCount(_currentMovie.id, 'downloads_count');
+    openDownloadGateway(url, quality, size, server, gid, isSub);
+  });
+}
+
+function openDownloadGateway(url, q, s, srv, gid, isSub){
+  _gatewayUrl = url; _gatewayQuality = q || 'HD'; _gatewaySize = s || ''; _gatewayServer = srv || 'DL SERVER 1'; _gatewayIsSubtitle = !!isSub;
+  const grp = gid ? _dlGroupsById[gid] : null;
+  _gatewayServers = [];
+  if (grp) {
+    if (grp.srv1) _gatewayServers.push({ label: 'DL SERVER 1', url: grp.srv1 });
+    if (grp.srv2) _gatewayServers.push({ label: 'DL SERVER 2', url: grp.srv2 });
+    if (grp.srv3) _gatewayServers.push({ label: 'DL SERVER 3', url: grp.srv3 });
+    if (grp.tgLink) _gatewayServers.push({ label: 'TELEGRAM', url: grp.tgLink, isTelegram: true });
+    if (!_gatewayServers.some(x=>x.url === url)) _gatewayServers.unshift({label: 'MAIN SERVER', url});
+  } else {
+    _gatewayServers = [{ label: _gatewayServer, url }];
+  }
+  const el = document.getElementById('dlGateway');
+  el.style.display = 'block'; document.body.style.overflow = 'hidden'; el.scrollTop = 0;
+  renderGatewayLoading();
+}
+
+function renderGatewayLoading(){
+  const el = document.getElementById('dlGateway');
+  let sec = 3; const total = 3; const r = 84; const circ = 2 * Math.PI * r;
+  el.innerHTML = `<div class="dlg-s1"><div class="dlg-ring-wrap"><svg class="dlg-ring-svg" viewBox="0 0 180 180" width="180" height="180" style="transform:rotate(-90deg)"><circle class="dlg-ring-bg" cx="90" cy="90" r="${r}"/><circle class="dlg-ring-fg" id="dlgRingFg" cx="90" cy="90" r="${r}" stroke-dasharray="${circ}" stroke-dashoffset="${circ}"/></svg><div class="dlg-ring-num" id="dlgSeconds">${sec}</div></div><div class="dlg-s1-title">Preparing your link...</div></div>`;
+  _gatewayTimer = setInterval(()=>{
+    sec--; document.getElementById('dlgSeconds').textContent = Math.max(sec, 0);
+    document.getElementById('dlgRingFg').style.strokeDashoffset = (circ * (1 - (total-sec)/total)).toFixed(1);
+    if(sec <= 0){ clearInterval(_gatewayTimer); renderGatewayDetailsPage(); }
+  }, 1000);
+}
+
+function renderGatewayDetailsPage(){
+  const el = document.getElementById('dlGateway'); const m = _currentMovie;
+  el.innerHTML = `<div class="dlg-s2"><img class="dlg-s2-poster" src="${m.poster}"><div class="dlg-s2-title">${esc(m.title)}</div><button class="dlg-s2-gobtn" onclick="renderGatewayDownloadPage()">GO TO DOWNLOAD PAGE</button><button class="dlg-s2-backbtn" onclick="closeDownloadGateway()">BACK TO MOVIE</button></div>`;
+}
+
+function renderGatewayDownloadPage(){
+  const el = document.getElementById('dlGateway'); const m = _currentMovie;
+  const filename = _gatewayIsSubtitle ? `${m.title}.${m.year}.Sinhala.srt` : `${m.title}.${m.year}.${_gatewayQuality}.mkv`;
+  el.innerHTML = `
+    <div class="dlg-s3">
+      <button class="dlg-s3-home" onclick="closeDownloadGateway()">BACK TO MOVIE</button>
+      <div class="dlg-s3-hdr"><img class="dlg-s3-hdr-poster" src="${m.poster}"><div class="dlg-s3-hdr-info"><div class="dlg-s3-hdr-title">${esc(m.title)}</div><div class="dlg-s3-hdr-meta">${m.year} · ${_gatewayQuality}</div></div></div>
+      <div class="dlg-s3-preview"><div class="dlg-s3-play">${_gatewayIsSubtitle?'SRT':'PLAY'}</div><div class="dlg-s3-filename">${esc(filename)}</div></div>
+      ${_gatewayServers.map(s => `<button class="dlg-s3-dlbtn ${s.isTelegram?'dlg-tg':''}" onclick="finalizeDownload('${escAttr(s.url)}')"><span class="dlg-s3-dlbtn-label">Download ${s.label}</span></button>`).join('')}
+    </div>`;
+}
+
+function finalizeDownload(url){ adGate('final_'+url, ()=>redirectPage(url)); }
+function closeDownloadGateway(){ clearInterval(_gatewayTimer); document.getElementById('dlGateway').style.display = 'none'; document.body.style.overflow = ''; }
+
+// TMDB & Other stuff copied from index.html...
+async function fetchStills(tid, type){
+  const row = document.getElementById('dpStillsRow');
+  try {
+    const data = await tmdbFetch(`/${type==='tv'||type==='series'?'tv':'movie'}/${tid}/images`);
+    const backdrops = (data.backdrops||[]).slice(0, 10);
+    if(backdrops.length){
+      const imgs = backdrops.map(b=>`<img class="dp-still-item" src="${TMDB_IMG}w500${b.file_path}">`).join('');
+      row.innerHTML = `<div class="dp-stills-track">${imgs}${imgs}</div>`;
+    } else { row.innerHTML = '<div class="dp-stills-empty">No stills.</div>'; }
+  } catch(e) { row.innerHTML = '<div class="dp-stills-empty">Error.</div>'; }
+}
+
+async function fetchStillsByTitle(title, type){
+  try {
+    const data = await tmdbFetch(`/search/${type==='tv'||type==='series'?'tv':'movie'}?query=${encodeURIComponent(title)}`);
+    if(data.results?.[0]) fetchStills(data.results[0].id, type);
+  } catch(e){}
+}
+
+async function fetchCastPhotos(names){
+  for(let i=0; i<Math.min(names.length, 8); i++){
+    try {
+      const data = await tmdbFetch(`/search/person?query=${encodeURIComponent(names[i])}`);
+      if(data.results?.[0]?.profile_path){
+        const img = document.getElementById(`castImg_${i}`);
+        img.src = TMDB_IMG + 'w185' + data.results[0].profile_path;
+        img.onload = () => { img.style.display = 'block'; document.getElementById(`castFallback_${i}`).style.display='none'; };
+      }
+    } catch(e){}
+  }
+}
+
+function fetchDetailComments(mid){
+  const el = document.getElementById('dpCommentsList');
+  fetch(`${FIREBASE_DB_URL}/comments/${mid}.json`).then(r=>r.json()).then(data=>{
+    const comms = data ? Object.entries(data).reverse() : [];
+    document.getElementById('dpCommentCount').textContent = `(${comms.length})`;
+    if(!comms.length){ el.innerHTML = '<div class="dp-no-comment">No comments yet.</div>'; return; }
+    el.innerHTML = comms.map(([k,c])=>`<div class="dp-comment-item"><div class="dp-comment-avatar">${(c.name||'A').charAt(0).toUpperCase()}</div><div class="dp-comment-body"><div class="dp-comment-name">${esc(c.name||'Anonymous')}</div><div class="dp-comment-text">${esc(c.text)}</div><div class="dp-comment-time">${c.date}</div></div></div>`).join('');
+  });
+}
+
+function submitDetailComment(){
+  const n = document.getElementById('dpCommentName').value.trim() || 'Anonymous';
+  const t = document.getElementById('dpCommentText').value.trim();
+  if(!t) return;
+  const p = {name:n, text:t, date:new Date().toLocaleDateString(), movie:_currentMovie.id};
+  fetch(`${FIREBASE_DB_URL}/comments/${_currentMovie.id}.json`, {method:'POST', body:JSON.stringify(p)}).then(()=>{
+    document.getElementById('dpCommentText').value = ''; fetchDetailComments(_currentMovie.id); toast('Posted!');
+  });
+}
+
+// Session & Auth
+function loadSession(){ try{ currentUser = JSON.parse(localStorage.getItem('cf_user')); renderAccountSlot(); }catch(e){} }
+function renderAccountSlot(){
+  const slot = document.getElementById('accountSlot');
+  if(currentUser) slot.innerHTML = `<div class="account-pill" onclick="openProfilePage()"><div class="account-pill-av">${(currentUser.name||'?').charAt(0).toUpperCase()}</div></div>`;
+}
+
+// Menu, Search, Request, Actor, Ep Details
+function openMenuDrawer(){ document.getElementById('menuBackdrop').classList.add('open'); document.getElementById('menuDrawer').classList.add('open'); }
+function closeMenuDrawer(){ document.getElementById('menuBackdrop').classList.remove('open'); document.getElementById('menuDrawer').classList.remove('open'); }
+function openSearchPopup(){ document.getElementById('searchPopupBackdrop').classList.add('open'); document.getElementById('searchPopup').classList.add('open'); document.getElementById('searchPopupInput').focus(); }
+function closeSearchPopup(){ document.getElementById('searchPopupBackdrop').classList.remove('open'); document.getElementById('searchPopup').classList.remove('open'); }
+
+function runSearchPopup(q){
+  q = q.trim().toLowerCase(); const res = document.getElementById('searchPopupResults');
+  const countEl = document.getElementById('searchCountPill');
+  if(!q){ res.innerHTML = ''; if(countEl) countEl.style.display='none'; return; }
+  const matches = MOVIES.filter(m => (m.title||'').toLowerCase().includes(q)).slice(0, 15);
+  if(countEl){ countEl.style.display = 'inline-flex'; countEl.textContent = `${matches.length} result${matches.length===1?'':'s'}`; }
+  if(!matches.length){ res.innerHTML = `<div class="search-empty-note">No titles found for "${esc(q)}"</div>`; return; }
+  res.innerHTML = matches.map(m => `
+    <div class="search-result-item" onclick="navigateToTitle('${m.id}')">
+      <img class="search-result-poster" src="${escAttr(m.poster||'')}" onerror="this.style.opacity='0'">
+      <div>
+        <div class="search-result-title">${esc(m.title||'')}</div>
+        <div class="search-result-meta">${esc(m.type==='tv'?'TV Series':'Movie')}${m.year?' · '+esc(m.year):''}</div>
+      </div>
+    </div>`).join('');
+}
+
+function buildMenuGrids(){
+  const genres = ['18+','Action','Action & Adventure','Adventure','Animation','Comedy','Crime','Documentary','Drama','Family','Fantasy','History','Horror','Music','Mystery','Romance','Sci-Fi & Fantasy','Science Fiction','Thriller','War','Western'];
+  const el = document.getElementById('menuGenres');
+  if(!el) return;
+  el.innerHTML = genres.map(g => `<div class="menu-cat-pill" onclick="window.location.href='/?genre=${encodeURIComponent(g.toLowerCase())}'">${esc(g)}</div>`).join('');
+}
+
+// ── ACTOR / CAST DETAIL PAGE ──
+function ageFromBirthday(birthday, deathday){
+  if(!birthday) return null;
+  const end = deathday ? new Date(deathday) : new Date();
+  const b = new Date(birthday);
+  let age = end.getFullYear() - b.getFullYear();
+  const m = end.getMonth() - b.getMonth();
+  if(m < 0 || (m===0 && end.getDate() < b.getDate())) age--;
+  return age;
+}
+
+async function openActorDetail(name){
+  const panel = document.getElementById('actorPage');
+  panel.style.display = 'block';
+  requestAnimationFrame(()=>panel.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  panel.innerHTML = `
+    <div class="dp-wrap">
+      <button class="dp-back" onclick="closeActorDetail()" style="margin-top:20px">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> BACK
+      </button>
+      <div class="ap-loading">Loading actor details...</div>
+    </div>`;
+
+  try {
+    const search = await tmdbFetch(`/search/person?query=${encodeURIComponent(name)}&include_adult=false`);
+    const person = (search.results||[])[0];
+    if(!person){
+      panel.querySelector('.ap-loading').textContent = 'No details found for '+name+'.';
+      return;
+    }
+    const [detail, credits] = await Promise.all([
+      tmdbFetch(`/person/${person.id}?language=en-US`),
+      tmdbFetch(`/person/${person.id}/combined_credits?language=en-US`)
+    ]);
+
+    const age = ageFromBirthday(detail.birthday, detail.deathday);
+    const avatarHTML = detail.profile_path
+      ? `<img class="ap-avatar" src="${TMDB_IMG}w500${detail.profile_path}" alt="${escAttr(name)}">`
+      : `<div class="ap-avatar-fallback">${esc(name.charAt(0).toUpperCase())}</div>`;
+
+    const metaPills = [];
+    if(age) metaPills.push(`<span class="ap-meta-pill">🎂 ${age} yrs</span>`);
+    if(detail.birthday) metaPills.push(`<span class="ap-meta-pill">📅 ${esc(detail.birthday)}</span>`);
+    if(detail.place_of_birth) metaPills.push(`<span class="ap-meta-pill">📍 ${esc(detail.place_of_birth)}</span>`);
+
+    const allCredits = [...(credits.cast||[])];
+    const seen = new Set();
+    const uniqueCredits = allCredits.filter(c=>{
+      const key = c.media_type+'_'+c.id;
+      if(seen.has(key)) return false;
+      seen.add(key); return true;
+    }).sort((a,b)=>(b.popularity||0)-(a.popularity||0));
+
+    const onSite = [], others = [];
+    uniqueCredits.forEach(c=>{
+      const match = MOVIES.find(mm => (mm.tmdbId && String(mm.tmdbId)===String(c.id)) || (mm.title && c.title && mm.title.toLowerCase()===c.title.toLowerCase()));
+      if(match) onSite.push({...c, siteId: match.id});
+      else others.push(c);
+    });
+
+    const cardHTML = (c, isOnSite) => {
+      const title = c.title || c.name || '';
+      const poster = c.poster_path ? `${TMDB_IMG}w500${c.poster_path}` : '';
+      const posterImg = poster
+        ? `<img class="ap-card-poster" src="${poster}" alt="${escAttr(title)}">`
+        : `<div class="ap-card-poster" style="display:flex;align-items:center;justify-content:center;color:rgba(242,236,226,0.3);font-size:11px">No Image</div>`;
+      if(isOnSite){
+        return `<div class="ap-card" onclick="navigateToTitle('${escAttr(c.siteId)}')">
+          ${posterImg}
+          <div class="ap-card-title">${esc(title)}</div>
+        </div>`;
+      }
+      return `<div class="ap-card">
+          ${posterImg}
+          <div class="ap-card-title">${esc(title)}</div>
+          <button class="ap-card-req" onclick='openRequestModal(${JSON.stringify(title)}, ${c.id}, ${JSON.stringify(c.media_type||"movie")}, ${JSON.stringify(c.poster_path||"")})'>+ Request</button>
+        </div>`;
+    };
+
+    const onSiteHTML = onSite.length
+      ? `<div class="ap-grid">${onSite.slice(0,12).map(c=>cardHTML(c,true)).join('')}</div>`
+      : `<div class="dp-no-comment">This actor's titles aren't on our site yet.</div>`;
+
+    const othersHTML = others.length
+      ? `<div class="ap-grid">${others.slice(0,12).map(c=>cardHTML(c,false)).join('')}</div>`
+      : '';
+
+    panel.innerHTML = `
+      <div class="dp-wrap">
+        <button class="dp-back" onclick="closeActorDetail()" style="margin-top:20px">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> BACK
+        </button>
+        <div class="ap-hero">
+          ${avatarHTML}
+          <div class="ap-name">${esc(name)}</div>
+        </div>
+        <div class="ap-meta-row">${metaPills.join('')}</div>
+        ${detail.biography ? `<div class="ap-bio">${esc(detail.biography.length>420?detail.biography.slice(0,420)+'…':detail.biography)}</div>` : ''}
+
+        <div class="ap-section-head">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="13" y2="12"/></svg>
+          ON OUR SITE
+        </div>
+        ${onSiteHTML}
+
+        ${others.length ? `
+        <div class="ap-section-head">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          MORE TITLES — REQUEST TO ADD
+        </div>
+        ${othersHTML}` : ''}
+      </div>`;
+  } catch(e) {
+    panel.innerHTML = `
+      <div class="dp-wrap">
+        <button class="dp-back" onclick="closeActorDetail()" style="margin-top:20px">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> BACK
+        </button>
+        <div class="ap-loading">Couldn't load actor details. Try again later.</div>
+      </div>`;
+  }
+}
+
+function closeActorDetail(){
+  const panel = document.getElementById('actorPage');
+  panel.classList.remove('open');
+  setTimeout(()=>{ panel.style.display='none'; document.body.style.overflow=''; }, 320);
+}
+
+// ── EPISODE DETAILS PAGE ──
+let _epdp = { movieId:null, seasonIdx:0, epIdx:0 };
+
+async function openEpDetailsPage(movieId, seasonIdx, epIdx){
+  adGate('ep_'+movieId+'_'+seasonIdx+'_'+epIdx, ()=>_openEpDetailsPageReal(movieId, seasonIdx, epIdx));
+}
+
+async function _openEpDetailsPageReal(movieId, seasonIdx, epIdx){
+  const m = (movieId === _currentMovie?.id) ? _currentMovie : (MOVIE_MAP[movieId] || _currentMovie);
+  if(!m) return;
+  const s = m.seasons?.[seasonIdx];
+  if(!s) return;
+  const ep = s.episodes?.[epIdx];
+  if(!ep) return;
+
+  _epdp = { movieId, seasonIdx, epIdx };
+  const sNum = s.season || (seasonIdx+1);
+  const eNum = ep.ep || (epIdx+1);
+  const epTitle = ep.title || ('Episode '+eNum);
+
+  const page = document.getElementById('epDetailsPage');
+  page.style.display = 'block';
+  page.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+
+  const rows = [];
+  if(ep.pd480) rows.push({url:ep.pd480, res:'480p', tag:'SD', col:''});
+  if(ep.pd720) rows.push({url:ep.pd720, res:'720p', tag:'HD', col:''});
+  if(ep.pd1080) rows.push({url:ep.pd1080, res:'1080p', tag:'FHD', col:'fhd'});
+  if(!rows.length && ep.dlUrl && ep.dlUrl.trim() !== '#') rows.push({url:ep.dlUrl, res:'HD', tag:'HD', col:''});
+  if(!rows.length && (ep.srv1||ep.srv2||ep.srv3)) rows.push({url:ep.srv1||ep.srv2||ep.srv3, res:'HD', tag:'HD', col:''});
+
+  const epGid = 'ep_' + movieId + '_' + seasonIdx + '_' + epIdx;
+  _dlGroupsById[epGid] = ep;
+
+  const dlCardsHTML = rows.map(r => `
+    <div class="dp-dl-card" style="margin-bottom:10px" onclick="bumpCount('${escAttr(movieId)}','downloads');doDownload('${escAttr(r.url)}','${escAttr(r.res)}','','DL SERVER 1','${escAttr(epGid)}')">
+      <div class="dp-dl-inner">
+        <div class="dp-dl-qbox ${r.col}"><div class="dp-dl-qtype">${esc(r.tag)}</div><div class="dp-dl-qres">${esc(r.res)}</div></div>
+        <div class="dp-dl-info"><div class="dp-dl-title-row"><span class="dp-dl-label">Direct Download</span><span class="dp-dl-tag-pill">${esc(r.res)}</span></div></div>
+      </div>
+      <div class="dp-dl-btn"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> DOWNLOAD</div>
+    </div>`).join('');
+
+  const subUrl = ep.dlSubUrl || ep.subUrl;
+  const subCardHTML = subUrl ? `
+    <div class="dp-dl-wrap" style="margin:0 0 16px">
+      <div class="dp-dl-header"><div class="dp-dl-header-icon" style="color:#F5C518"><svg viewBox="0 0 24 24" style="stroke:#F5C518"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="dp-dl-header-label">SINHALA SUBTITLES</div></div>
+      <div class="dp-sub-card" onclick="bumpCount('${escAttr(movieId)}','subDownloads');doDownload('${escAttr(subUrl)}',null,null,null,null,true)">
+        <div class="dp-sub-inner">
+          <div class="dp-sub-qbox"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="dp-dl-info"><div class="dp-dl-title-row"><span class="dp-dl-label" style="color:#F5C518">Sinhala Subtitle</span></div><div class="dp-dl-sub-row">BY <b>${esc((m.subBy||'Movie Mania LK').toUpperCase())}</b></div></div>
+        </div>
+        <div class="dp-sub-btn"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> DOWNLOAD</div>
+      </div>
+    </div>` : '';
+
+  const moreEpisodesHTML = (s.episodes||[]).map((e, idx) => {
+    const isCur = idx === epIdx;
+    return `
+      <div class="dp-ep-card${isCur?' dp-ep-card-active':''}" onclick="${isCur?'':'_openEpDetailsPageReal(\''+movieId+'\','+seasonIdx+','+idx+')'}">
+        <div class="dp-ep-thumb"><img src="${escAttr(e.img||e.thumb||m.poster)}" onerror="this.style.display='none'"><div class="dp-ep-num">E${e.ep||idx+1}</div></div>
+        <div class="dp-ep-info"><div class="dp-ep-title">${esc(e.title||'Episode '+(e.ep||idx+1))}</div></div>
+      </div>`;
+  }).join('');
+
+  page.innerHTML = `
+    <div class="epdp-nav">
+      <button class="epdp-back" onclick="closeEpDetailsPage()">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>Back to ${esc(m.title||'Series')}</span>
+      </button>
+      <span class="epdp-ep-label">S${sNum} E${eNum}</span>
+    </div>
+    <div class="epdp-hero">
+      <img src="${escAttr(ep.img||ep.thumb||m.backdrop||m.poster)}" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div class="epdp-hero-shade"></div>
+      <div class="epdp-hero-bottom"><div class="epdp-hero-title">${esc(epTitle)}</div></div>
+    </div>
+    <div class="epdp-body">
+      <div class="epdp-season-pill">SEASON ${sNum} • EPISODE ${eNum}</div>
+      <h1 class="epdp-title">${esc(epTitle)}</h1>
+      <div class="epdp-desc-card"><div class="epdp-desc-text">${esc(ep.desc||ep.description||m.description||'No description available.')}</div></div>
+      <div id="dpEpStreamSection"></div>
+      ${dlCardsHTML ? `<div class="dp-dl-wrap" style="margin:0 0 16px"><div class="dp-dl-header"><div class="dp-dl-header-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="dp-dl-header-label">SELECT QUALITY</div></div>${dlCardsHTML}</div>` : ''}
+      ${subCardHTML}
+      <div class="dp-section-head" style="margin-top:20px"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="7" y1="3" x2="7" y2="21"/></svg> MORE EPISODES</div>
+      <div class="dp-ep-list">${moreEpisodesHTML}</div>
+    </div>`;
+  renderEpStreamSection(m, ep);
+}
+
+function closeEpDetailsPage(){
+  document.getElementById('epDetailsPage').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function openEpDlModal(movieId, seasonIdx, epIdx){ openEpDetailsPage(movieId, seasonIdx, epIdx); }
+function closeEpModal(){ const m = document.getElementById('epDlModal'); if(m) m.classList.remove('open'); }
+
+// ── REQUEST CENTER ──
+let currentActorReq = null;
+let _rpSearchTimer = null;
+
+function openRequestPage(){ adGate('request', _openRequestPageReal); }
+function _openRequestPageReal(){
+  const panel = document.getElementById('requestPage');
+  panel.style.display = 'block';
+  requestAnimationFrame(()=>panel.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  panel.innerHTML = `
+    <div class="dp-wrap" style="position:relative;z-index:1">
+      <button class="dp-back" onclick="closeRequestPage()" style="margin-top:20px">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> BACK
+      </button>
+      <div class="rp-head"><div class="rp-title">Request <span style="color:var(--crimson)">Center</span></div></div>
+      <div class="rp-search-row">
+        <input class="rp-search-input" id="rpSearchInput" placeholder="Search Movie or TV Show..." oninput="onRequestSearchInput()" onkeydown="if(event.key==='Enter')searchRequestTMDB()">
+        <button class="rp-search-btn" onclick="searchRequestTMDB()">Search</button>
+      </div>
+      <div class="rp-status" id="rpStatus"></div>
+      <div class="rp-results" id="rpResults"></div>
+      <div class="rp-section-title">🔥 Top Requested</div>
+      <div class="rp-top-list" id="rpTopList"><div style="color:rgba(242,236,226,0.4);font-size:12.5px;padding:20px 0;text-align:center">Loading...</div></div>
+    </div>`;
+  document.getElementById('rpSearchInput').focus();
+  loadTopRequests();
+}
+
+function closeRequestPage(){
+  const panel = document.getElementById('requestPage');
+  panel.classList.remove('open');
+  setTimeout(()=>{ panel.style.display='none'; document.body.style.overflow=''; }, 320);
+}
+
+function onRequestSearchInput(){
+  clearTimeout(_rpSearchTimer);
+  const q = document.getElementById('rpSearchInput').value.trim();
+  if(!q){ document.getElementById('rpStatus').textContent=''; document.getElementById('rpResults').innerHTML=''; return; }
+  _rpSearchTimer = setTimeout(searchRequestTMDB, 450);
+}
+
+async function searchRequestTMDB(){
+  const q = document.getElementById('rpSearchInput').value.trim();
+  const statusEl = document.getElementById('rpStatus');
+  const resultsEl = document.getElementById('rpResults');
+  if(!q) return;
+  statusEl.textContent = 'Searching...'; resultsEl.innerHTML = '';
+  try {
+    const data = await tmdbFetch(`/search/multi?query=${encodeURIComponent(q)}&include_adult=false`);
+    const results = (data.results||[]).filter(r=>r.media_type==='movie'||r.media_type==='tv').slice(0,14);
+    if(!results.length){ statusEl.textContent = 'No results found.'; return; }
+    statusEl.textContent = `${results.length} result(s) — tap one to request`;
+    resultsEl.innerHTML = results.map(r => {
+      const title = r.title || r.name || '';
+      const year = (r.release_date||r.first_air_date||'').slice(0,4);
+      const thumb = r.poster_path ? `<img class="rp-result-thumb" src="${TMDB_IMG}w185${r.poster_path}">` : '<div class="rp-result-thumb-ph">🎬</div>';
+      return `<div class="rp-result-item" onclick='openRequestModal(${JSON.stringify(title)}, ${r.id}, ${JSON.stringify(r.media_type)}, ${JSON.stringify(r.poster_path||"")})'>
+        ${thumb}
+        <div class="rp-result-info"><div class="rp-result-title">${esc(title)}</div><div class="rp-result-meta">${r.media_type==='tv'?'TV Series':'Movie'}${year?' · '+year:''}</div></div>
+      </div>`;
+    }).join('');
+  } catch(e) { statusEl.textContent = 'Search failed.'; }
+}
+
+function loadTopRequests(){
+  const list = document.getElementById('rpTopList');
+  fetch(`${FIREBASE_DB_URL}/requests.json`).then(r=>r.json()).then(data=>{
+    const items = data ? Object.values(data).reverse().slice(0,20) : [];
+    if(!items.length){ list.innerHTML = '<div style="color:rgba(242,236,226,0.4);font-size:12.5px;padding:20px 0;text-align:center">No requests yet.</div>'; return; }
+    list.innerHTML = items.map(r => `
+      <div class="rp-top-card">
+        ${r.posterPath?`<img class="rp-top-thumb" src="${TMDB_IMG}w185${r.posterPath}">`:'<div class="rp-top-thumb-ph">🎬</div>'}
+        <div class="rp-top-info"><div class="rp-top-title">${esc(r.movie||r.title||'')}</div></div>
+      </div>`).join('');
+  }).catch(()=>{ if(list) list.innerHTML = 'Error loading requests.'; });
+}
+
+function openRequestModal(title, tmdbId, mediaType, posterPath){
+  currentActorReq = {title, tmdbId, mediaType, posterPath};
+  const name = currentUser?.name || '';
+  const email = currentUser?.email || '';
+  const modalHTML = `
+    <div class="ep-dl-modal open" id="requestModalDialog" onclick="if(event.target===this)closeRequestModal()">
+      <div class="ep-dl-sheet">
+        <div class="ep-dl-handle"></div>
+        <div class="ep-dl-title">Request This Title</div>
+        <div class="ep-dl-sub">${esc(title)}</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <input class="req-input" id="reqName" placeholder="Your Name" value="${escAttr(name)}" style="width:100%">
+          <input class="req-input" id="reqEmail" placeholder="Your Email" value="${escAttr(email)}" style="width:100%">
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px">
+          <div class="dp-ep-btn" style="flex:1;justify-content:center;padding:12px;border-radius:12px;font-size:12px" onclick="closeRequestModal()">Cancel</div>
+          <div class="dp-ep-btn" style="flex:1;justify-content:center;padding:12px;border-radius:12px;font-size:12px;background:var(--crimson);border-color:var(--crimson);color:#fff" onclick="submitRequest()">Submit</div>
+        </div>
+      </div>
+    </div>`;
+  let existing = document.getElementById('requestModalDialog');
+  if(existing) existing.remove();
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+function closeRequestModal(){
+  const m = document.getElementById('requestModalDialog');
+  if(m) m.remove();
+  currentActorReq = null;
+}
+
+function submitRequest(){
+  const name = document.getElementById('reqName').value.trim();
+  const email = document.getElementById('reqEmail').value.trim();
+  if(!name || !email){ toast('Please enter name and email'); return; }
+  const payload = {
+    movie: currentActorReq.title, tmdbId: currentActorReq.tmdbId, mediaType: currentActorReq.mediaType,
+    posterPath: currentActorReq.posterPath, user: name, email, time: Date.now(), status: 'pending'
+  };
+  fetch(`${FIREBASE_DB_URL}/requests.json`, { method:'POST', body: JSON.stringify(payload) })
+    .then(()=>{ toast('Request submitted!'); closeRequestModal(); });
+}
+
+// ── AUTH & USER ──
+function openAuthModal(){ document.getElementById('authModal').classList.add('open'); }
+function closeAuthModal(){ document.getElementById('authModal').classList.remove('open'); }
+function switchAuthTab(tab){
+  const isLogin = tab==='login';
+  document.getElementById('authTabLogin').classList.toggle('active', isLogin);
+  document.getElementById('authTabRegister').classList.toggle('active', !isLogin);
+  document.getElementById('authLoginForm').style.display = isLogin ? 'block' : 'none';
+  document.getElementById('authRegisterForm').style.display = isLogin ? 'none' : 'block';
+}
+
+async function doLogin(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  if(!email || !password){ document.getElementById('loginStatus').textContent = 'Fill all fields'; return; }
+  try {
+    const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`, {
+      method:'POST', body: JSON.stringify({email, password, returnSecureToken:true})
+    });
+    const data = await res.json();
+    if(data.error) throw new Error(data.error.message);
+    currentUser = {uid:data.localId, email:data.email, name:email.split('@')[0], idToken:data.idToken};
+    localStorage.setItem('cf_user', JSON.stringify(currentUser));
+    renderAccountSlot(); closeAuthModal(); toast('Logged in!');
+  } catch(e) { document.getElementById('loginStatus').textContent = e.message; }
+}
+
+async function doRegister(){
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+  if(!name || !email || password.length < 6){ document.getElementById('registerStatus').textContent = 'Invalid details (pw min 6 chars)'; return; }
+  try {
+    const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`, {
+      method:'POST', body: JSON.stringify({email, password, returnSecureToken:true})
+    });
+    const data = await res.json();
+    if(data.error) throw new Error(data.error.message);
+    currentUser = {uid:data.localId, email:data.email, name, idToken:data.idToken};
+    localStorage.setItem('cf_user', JSON.stringify(currentUser));
+    renderAccountSlot(); closeAuthModal(); toast('Account created!');
+  } catch(e) { document.getElementById('registerStatus').textContent = e.message; }
+}
+
+function logoutUser(){
+  currentUser = null; localStorage.removeItem('cf_user');
+  renderAccountSlot(); closeProfilePage(); toast('Logged out');
+}
+
+function openProfilePage(){
+  if(!currentUser){ openAuthModal(); return; }
+  document.getElementById('profileNameDisplay').textContent = currentUser.name || 'User';
+  document.getElementById('profileEmailDisplay').textContent = currentUser.email || '';
+  document.getElementById('profileEditName').value = currentUser.name || '';
+  document.getElementById('profilePage').classList.add('show');
+}
+
+function closeProfilePage(){ document.getElementById('profilePage').classList.remove('show'); }
+function saveProfileChanges(){
+  const n = document.getElementById('profileEditName').value.trim();
+  if(n && currentUser){ currentUser.name = n; localStorage.setItem('cf_user', JSON.stringify(currentUser)); renderAccountSlot(); toast('Saved'); }
+}
+
+function autoFillCommentName(){
+  const el = document.getElementById('dpCommentName');
+  if(el && !el.value && currentUser) el.value = currentUser.name;
+}
+
+// ── DOWNLOAD GATEWAY DETAILS (CineVibes & Mirrors) ──
+function renderGatewayDownloadPage(){
+  const el = document.getElementById('dlGateway'); const m = _currentMovie;
+  const filename = _gatewayIsSubtitle ? `${(m.title||'').replace(/[^a-zA-Z0-9 ]/g,'').replace(/\s+/g,'.')}.${m.year}.Sinhala.srt` : `${(m.title||'').replace(/[^a-zA-Z0-9 ]/g,'').replace(/\s+/g,'.')}.${m.year}.${_gatewayQuality.replace(/\s/g,'')}.mkv`;
+  el.innerHTML = `
+    <div class="dlg-s3">
+      <button class="dlg-s3-home" onclick="closeDownloadGateway()">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> BACK TO MOVIE
+      </button>
+      <div class="dlg-s3-hdr">
+        <img class="dlg-s3-hdr-poster" src="${escAttr(m.poster||'')}">
+        <div class="dlg-s3-hdr-info">
+          <div class="dlg-s3-hdr-title">${esc(m.title||'')}</div>
+          <div class="dlg-s3-hdr-meta">${[m.year, m.genre, _gatewayQuality].filter(Boolean).join(' · ').toUpperCase()}</div>
+        </div>
+      </div>
+      <div class="dlg-s3-preview">
+        <div class="dlg-s3-play">${_gatewayIsSubtitle ? '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' : '<svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg>'}</div>
+        <div class="dlg-s3-filename">${esc(filename)}</div>
+        ${_gatewaySize ? `<div class="dlg-s3-sizebadge">${esc(_gatewaySize)}</div>` : ''}
+      </div>
+
+      ${_gatewayServers.map((srv, i) => `
+        <button class="dlg-s3-dlbtn ${srv.isTelegram?'dlg-tg':''}" style="${i>0?'margin-top:10px;':''}" onclick="finalizeDownload('${escAttr(srv.url)}')">
+          <div class="dlg-s3-dlbtn-icon">${srv.isTelegram?'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.5L2.5 12l6 2 2 6 3-4 5.5 4z"/></svg>':'<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>'}</div>
+          <div class="dlg-s3-dlbtn-mid">
+            <span class="dlg-s3-dlbtn-label">${_gatewayIsSubtitle ? 'Download Subtitle' : `Download ${_gatewayQuality}${_gatewaySize?' ('+_gatewaySize+')':''}`}</span>
+            <span class="dlg-s3-dlbtn-srv">${srv.isTelegram ? 'Via Telegram' : 'Direct Download'}</span>
+          </div>
+          <span class="dlg-s3-srvbadge">${esc(srv.label)}</span>
+        </button>`).join('')}
+
+      ${_gatewayIsSubtitle ? '' : `
+      <div class="dlg-sub-notice">
+        <span class="dlg-sub-notice-warn-icon">⚠️</span>
+        <div class="dlg-sub-notice-title">වැදගත් දැනුම්දීමයි!</div>
+        <div class="dlg-sub-notice-main-text">වීඩියෝවේ <span class="hl-orange">Quality</span> එක තබාගැනීම සඳහා මෙම Video ගොනුවට <span class="hl-blue">Subtitles hardcoded කර නොමැත.</span></div>
+        <div class="dlg-sub-steps">
+          <div class="dlg-sub-step">
+            <div class="dlg-sub-step-icon dl"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+            <div class="dlg-sub-step-text">Details page එකේ පහලින් ඇති <b>Subtitles</b> කොටසින් උපසිරැසි ගොනුව වෙනම Download කරගන්න.</div>
+          </div>
+          <div class="dlg-sub-step">
+            <div class="dlg-sub-step-icon pl"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div>
+            <div class="dlg-sub-step-text">Download කරගත් Video එක සහ Subtitle file එක <b>VLC</b> හෝ <b>MX Player</b> හරහා open කරගන්න.</div>
+          </div>
+        </div>
+        <div class="dlg-sub-player-grid">
+          <div class="dlg-sub-player-col">
+            <div class="dlg-sub-player-name vlc">VLC PLAYER</div>
+            <a class="dlg-sub-player-btn" href="https://play.google.com/store/apps/details?id=org.videolan.vlc" target="_blank" rel="noopener">Android</a>
+            <a class="dlg-sub-player-btn" href="https://apps.apple.com/app/vlc-for-mobile/id650377962" target="_blank" rel="noopener">iOS</a>
+          </div>
+          <div class="dlg-sub-player-col">
+            <div class="dlg-sub-player-name mx">MX PLAYER</div>
+            <a class="dlg-sub-player-btn" href="https://play.google.com/store/apps/details?id=com.mxtech.videoplayer.ad" target="_blank" rel="noopener">Android</a>
+            <a class="dlg-sub-player-btn" href="https://apps.apple.com/app/mx-player/id1429703801" target="_blank" rel="noopener">iOS</a>
+          </div>
+        </div>
+        <div class="dlg-sub-powered">MOVIE MANIA LK CLOUD</div>
+      </div>`}
+    </div>`;
+}
+
+// ── SCROLLBARS ──
+function initCastScrollbar(){
+  const row = document.getElementById('dpCastRow');
+  const bar = document.getElementById('dpCastScrollbar');
+  const fill = document.getElementById('dpCastScrollbarFill');
+  if(!row || !bar || !fill) return;
+  const max = row.scrollWidth - row.clientWidth;
+  if(max <= 4){ bar.style.display = 'none'; return; }
+  bar.style.display = 'block';
+  const trackW = bar.clientWidth;
+  const fillW = Math.max(24, (row.clientWidth / row.scrollWidth) * trackW);
+  fill.style.width = fillW + 'px';
+  const maxT = trackW - fillW;
+  row.onscroll = () => { fill.style.transform = `translateX(${(row.scrollLeft / max) * maxT}px)`; };
+}
+
+function initColTimelineScrollbar(){
+  const scroll = document.querySelector('.col-timeline-scroll');
+  const fill = document.querySelector('.col-timeline-scrollbar-fill');
+  if(!scroll || !fill) return;
+  const max = scroll.scrollWidth - scroll.clientWidth;
+  if(max <= 4){ fill.parentElement.style.display='none'; return; }
+  fill.parentElement.style.display='block';
+  const trackW = fill.parentElement.clientWidth;
+  const fillW = Math.max(32, (scroll.clientWidth / scroll.scrollWidth) * trackW);
+  fill.style.width = fillW + 'px';
+  const maxT = trackW - fillW;
+  scroll.onscroll = () => { fill.style.transform = `translateX(${(scroll.scrollLeft / max) * maxT}px)`; };
+}
+
+function toast(m){
+  let b = document.getElementById('mwToast');
+  if(!b){
+    b = document.createElement('div');
+    b.id = 'mwToast';
+    b.style.cssText = 'position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);background:rgba(23,19,15,0.96);border:1px solid rgba(232,38,42,0.4);color:#f2ece2;font-size:12.5px;font-weight:700;padding:11px 22px;border-radius:24px;z-index:9999;opacity:0;pointer-events:none;transition:0.3s;box-shadow:0 10px 26px rgba(0,0,0,0.5);font-family:Manrope,sans-serif';
+    document.body.appendChild(b);
+  }
+  b.textContent = m;
+  b.style.opacity = '1';
+  b.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(()=>{ b.style.opacity = '0'; b.style.transform = 'translateX(-50%) translateY(20px)'; }, 1800);
+}
+
+function bumpCount(id, f){
+  fetch(`${FIREBASE_DB_URL}/movies/${id}/${f}.json`).then(r=>r.json()).then(c=>{
+    fetch(`${FIREBASE_DB_URL}/movies/${id}/${f}.json`, {method:'PUT', body:JSON.stringify((c||0)+1)}).catch(()=>{});
+  }).catch(()=>{});
+}
+
+function addToRecent(id){
+  if(!id) return;
+  recentlyViewed = [id, ...recentlyViewed.filter(x=>x!==id)].slice(0, 50);
+  try{ localStorage.setItem('cf_recent', JSON.stringify(recentlyViewed)); }catch(e){}
+}
+
+// Start
+boot();
+</script>
+</script>
+<!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1R1RM75F7C"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1R1RM75F7C');
+  </script>
+</body>
+</html>
